@@ -28,6 +28,11 @@ function Choir() {
               </a>
             </Button>
             <Button asChild variant="outline" className="choir-anchor-btn">
+              <a href="#moments">
+                <Sparkles size={16} /> {content.topGallery.title}
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="choir-anchor-btn">
               <a href="#parent-child-choir">
                 <Users size={16} /> {content.programsOverview.parentChild.title}
               </a>
@@ -46,6 +51,10 @@ function Choir() {
         <div className="choir-subnav-inner">
           <span className="eyebrow">{content.labels.jumpToSection}</span>
           <div className="choir-subnav-links">
+            <a className="choir-subnav-pill" href="#moments">
+              <Sparkles size={15} aria-hidden="true" />
+              {content.topGallery.title}
+            </a>
             <a className="choir-subnav-pill" href="#programs-overview">
               <Music2 size={15} aria-hidden="true" />
               {content.programsOverview.title}
@@ -62,9 +71,38 @@ function Choir() {
         </div>
       </nav>
 
+      {/* Performance Moments Photo Showcase (Moved towards the top of the main choir page) */}
+      <section className="public-section tone-band choir-top-gallery-section" id="moments">
+        <div className="section-heading centered">
+          <span className="eyebrow">{content.topGallery.eyebrow}</span>
+          <h2>{content.topGallery.title}</h2>
+          <p className="section-subtitle">{content.topGallery.subtitle}</p>
+        </div>
+
+        <div className="choir-top-gallery-grid">
+          {content.topGallery.photos.map((photo) => (
+            <figure className="choir-top-photo-card" key={photo.url}>
+              <div className="choir-photo-frame">
+                {photo.tag ? <span className="choir-photo-tag">{photo.tag}</span> : null}
+                <img src={photo.url} alt={photo.caption} loading="lazy" />
+              </div>
+              <figcaption>{photo.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div className="choir-top-gallery-cta">
+          <Button asChild>
+            <a href="/choir-children#performances">
+              <Sparkles size={16} /> {content.programsOverview.childrensChoir.action} <ArrowRight size={16} />
+            </a>
+          </Button>
+        </div>
+      </section>
+
       {/* Programs Overview: Clear Presentation of the Two Programs */}
       <section className="public-section choir-programs-overview-section" id="programs-overview">
-        <div className="section-heading text-center">
+        <div className="section-heading centered">
           <span className="eyebrow">{content.hero.eyebrow}</span>
           <h2>{content.programsOverview.title}</h2>
           <p className="section-subtitle">{content.programsOverview.subtitle}</p>
@@ -202,7 +240,7 @@ function Choir() {
         </div>
 
         <div className="choir-gallery-section">
-          <div className="section-heading">
+          <div className="section-heading centered">
             <span className="eyebrow">{content.childrensChoir.eyebrow}</span>
             <h3>{content.childrensChoir.galleryTitle}</h3>
           </div>

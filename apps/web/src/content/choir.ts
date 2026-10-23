@@ -32,6 +32,16 @@ export type ChoirContent = {
     id: string
     label: string
   }>
+  topGallery: {
+    eyebrow: string
+    title: string
+    subtitle: string
+    photos: Array<{
+      url: string
+      caption: string
+      tag?: string
+    }>
+  }
   programsOverview: {
     title: string
     subtitle: string
@@ -135,9 +145,48 @@ export const choirContent: Localized<ChoirContent> = {
       action: 'Register interest',
     },
     sectionsNav: [
+      { id: 'moments', label: 'Performance Moments' },
+      { id: 'programs-overview', label: 'Our Programs' },
       { id: 'parent-child-choir', label: 'Parent-Child Choir' },
       { id: 'childrens-choir', label: 'SAIMA Children’s Choir' },
     ],
+    topGallery: {
+      eyebrow: 'Choir in Action',
+      title: 'Moments of Harmony & Stage Performance',
+      subtitle: 'Capturing our young singers and choral community in live performance, diplomatic celebrations, and concert stages across Adelaide.',
+      photos: [
+        {
+          url: '/images/saima/choir-performances/20261016-stage.jpg',
+          caption: 'Live stage appearance at the Adelaide Concert Stage with stage microphones and scenic projection.',
+          tag: 'Concert Stage',
+        },
+        {
+          url: '/images/saima/choir1.jpg',
+          caption: 'Featured performance with glowing star lights for the 77th Anniversary National Day Reception.',
+          tag: 'Diplomatic Reception',
+        },
+        {
+          url: '/images/saima/choir-performances/20261016-singing.jpg',
+          caption: 'Choristers delivering focused multi-part harmonies with expressive technique.',
+          tag: 'Choral Harmony',
+        },
+        {
+          url: '/images/saima/choir.jpg',
+          caption: 'Singing before the Australian and Chinese flags, sharing music of peace and cross-cultural friendship.',
+          tag: 'Cultural Exchange',
+        },
+        {
+          url: '/images/saima/choir-performances/20261016-dignitaries.jpg',
+          caption: 'Honouring our young singers alongside esteemed dignitaries, SAIMA leaders, and guest artists.',
+          tag: 'Honours & Celebration',
+        },
+        {
+          url: '/images/saima/choir2.jpeg',
+          caption: 'Young choristers celebrating together in concert attire and panda headbands after their performance.',
+          tag: 'Community Joy',
+        },
+      ],
+    },
     programsOverview: {
       title: 'Our Choral Programs',
       subtitle: 'Two dedicated pathways celebrating the power of song — for families connecting through music, and for young singers pursuing vocal excellence and live stagecraft.',
@@ -364,9 +413,48 @@ export const choirContent: Localized<ChoirContent> = {
       action: '登记意向',
     },
     sectionsNav: [
+      { id: 'moments', label: '精彩舞台掠影' },
+      { id: 'programs-overview', label: '合唱项目' },
       { id: 'parent-child-choir', label: '亲子合唱团' },
       { id: 'childrens-choir', label: 'SAIMA 儿童合唱团' },
     ],
+    topGallery: {
+      eyebrow: '精彩实况',
+      title: '舞台高光与排练演出掠影',
+      subtitle: '记录南澳少年歌者与合唱大家庭在正式音乐厅舞台、重要外交招待会及社区文化庆典中的璀璨瞬间。',
+      photos: [
+        {
+          url: '/images/saima/choir-performances/20261016-stage.jpg',
+          caption: '在阿德莱德正式音乐会大舞台上呈现多声部合唱与专业舞台拾音。',
+          tag: '音乐厅专场',
+        },
+        {
+          url: '/images/saima/choir1.jpg',
+          caption: '受邀在国庆77周年招待会官方大屏幕前手持星光深情献唱《盛世星河》。',
+          tag: '重要外交庆典',
+        },
+        {
+          url: '/images/saima/choir-performances/20261016-singing.jpg',
+          caption: '小团员们全神贯注投入歌唱，展现出色的多声部融合度与发声技巧。',
+          tag: '和声与发声',
+        },
+        {
+          url: '/images/saima/choir.jpg',
+          caption: '在中澳两国国旗前倾情歌唱，传递和平、友谊与跨文化交流之声。',
+          tag: '文化交流',
+        },
+        {
+          url: '/images/saima/choir-performances/20261016-dignitaries.jpg',
+          caption: '演出落幕后，小团员们与莅临现场的各界政要、侨界代表及艺术家同台合影。',
+          tag: '同台荣光',
+        },
+        {
+          url: '/images/saima/choir2.jpeg',
+          caption: '演出圆满结束后，身着演出服与可爱熊猫头饰的小团员们在现场欢聚留念。',
+          tag: '少年风采',
+        },
+      ],
+    },
     programsOverview: {
       title: '两大特色合唱项目',
       subtitle: '我们提供两条清晰的合唱成长路径：以家庭陪伴与艺术启蒙为主的亲子合唱团，以及专注于系统声乐训练与正式舞台实践的 SAIMA 儿童合唱团。',

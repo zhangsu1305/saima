@@ -354,6 +354,19 @@ describe('public site content', () => {
         ]),
       )
 
+      expect(choir.topGallery).toBeTruthy()
+      expect(choir.topGallery.photos.length).toBeGreaterThanOrEqual(6)
+      expect(choir.topGallery.photos.map((p) => p.url)).toEqual(
+        expect.arrayContaining([
+          '/images/saima/choir-performances/20261016-stage.jpg',
+          '/images/saima/choir1.jpg',
+          '/images/saima/choir-performances/20261016-singing.jpg',
+          '/images/saima/choir.jpg',
+          '/images/saima/choir-performances/20261016-dignitaries.jpg',
+          '/images/saima/choir2.jpeg',
+        ]),
+      )
+
       const galaPerf = childrenPage.performances.find((p) => p.id === 'gala-concert-20261016')
       expect(galaPerf).toBeTruthy()
       expect(galaPerf?.photos.length).toBeGreaterThanOrEqual(3)

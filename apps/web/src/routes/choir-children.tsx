@@ -109,7 +109,7 @@ function ChoirChildren() {
 
       {/* 4 Core Pillars */}
       <section className="public-section choir-pillars-section">
-        <div className="section-heading text-center">
+        <div className="section-heading centered">
           <span className="eyebrow">{page.pillarsEyebrow}</span>
           <h2>{page.pillarsTitle}</h2>
         </div>
@@ -131,7 +131,7 @@ function ChoirChildren() {
 
       {/* Integrated Actual Performances */}
       <section className="public-section tone-band choir-performances-section" id="performances">
-        <div className="section-heading">
+        <div className="section-heading centered">
           <span className="eyebrow">{page.performancesEyebrow}</span>
           <h2>{page.performancesTitle}</h2>
           <p className="section-subtitle">{page.performancesSubtitle}</p>
