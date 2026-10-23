@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ArrowRight, CalendarDays, CheckCircle2, MapPin, Music2, Sparkles } from 'lucide-react'
+import { ArrowRight, CalendarDays, CheckCircle2, HeartHandshake, MapPin, Music2, Sparkles, Users } from 'lucide-react'
 
 import { useLanguage } from '../components/language-provider'
 import { Button } from '../components/ui/button'
@@ -14,6 +14,7 @@ function Choir() {
 
   return (
     <main className="public-page">
+      {/* Hero Section */}
       <section className="choir-hero">
         <img src={siteImages.choirHall} alt="" aria-hidden="true" />
         <div>
@@ -21,12 +22,17 @@ function Choir() {
           <h1>{content.hero.title}</h1>
           <p>{content.hero.paragraphs[0]}</p>
           <div className="actions">
-            {content.sectionsNav.map((section) => (
-              <Button asChild key={section.id} variant="outline" className="choir-anchor-btn">
-                <a href={`#${section.id}`}>{section.label}</a>
-              </Button>
-            ))}
             <Button asChild>
+              <a href="/choir-children">
+                <Sparkles size={16} /> {content.programsOverview.childrensChoir.action}
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="choir-anchor-btn">
+              <a href="#parent-child-choir">
+                <Users size={16} /> {content.programsOverview.parentChild.title}
+              </a>
+            </Button>
+            <Button asChild variant="outline">
               <a href="#join">
                 {content.hero.action} <ArrowRight size={16} />
               </a>
@@ -35,20 +41,93 @@ function Choir() {
         </div>
       </section>
 
+      {/* Sticky Program Navigation */}
       <nav className="choir-subnav" aria-label={content.labels.jumpToSection}>
         <div className="choir-subnav-inner">
           <span className="eyebrow">{content.labels.jumpToSection}</span>
           <div className="choir-subnav-links">
-            {content.sectionsNav.map((section) => (
-              <a className="choir-subnav-pill" href={`#${section.id}`} key={section.id}>
-                <Music2 size={15} aria-hidden="true" />
-                {section.label}
-              </a>
-            ))}
+            <a className="choir-subnav-pill" href="#programs-overview">
+              <Music2 size={15} aria-hidden="true" />
+              {content.programsOverview.title}
+            </a>
+            <a className="choir-subnav-pill" href="#parent-child-choir">
+              <HeartHandshake size={15} aria-hidden="true" />
+              {content.programsOverview.parentChild.title}
+            </a>
+            <a className="choir-subnav-pill highlight" href="/choir-children">
+              <Sparkles size={15} aria-hidden="true" />
+              {content.programsOverview.childrensChoir.title}
+            </a>
           </div>
         </div>
       </nav>
 
+      {/* Programs Overview: Clear Presentation of the Two Programs */}
+      <section className="public-section choir-programs-overview-section" id="programs-overview">
+        <div className="section-heading text-center">
+          <span className="eyebrow">{content.hero.eyebrow}</span>
+          <h2>{content.programsOverview.title}</h2>
+          <p className="section-subtitle">{content.programsOverview.subtitle}</p>
+        </div>
+
+        <div className="choir-programs-grid">
+          {/* Program 1: Parent-Child Choir */}
+          <article className="choir-program-card parent-child-card">
+            <div className="choir-program-card-badge">
+              <HeartHandshake size={18} aria-hidden="true" />
+              <span>{content.programsOverview.parentChild.eyebrow}</span>
+            </div>
+            <h3 className="choir-program-card-title">{content.programsOverview.parentChild.title}</h3>
+            <p className="choir-program-card-summary">{content.programsOverview.parentChild.summary}</p>
+
+            <ul className="choir-program-card-features">
+              {content.programsOverview.parentChild.features.map((feature) => (
+                <li key={feature}>
+                  <CheckCircle2 size={16} aria-hidden="true" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="choir-program-card-actions">
+              <Button asChild variant="outline">
+                <a href={content.programsOverview.parentChild.actionHref}>
+                  {content.programsOverview.parentChild.action} <ArrowRight size={16} />
+                </a>
+              </Button>
+            </div>
+          </article>
+
+          {/* Program 2: SAIMA Children's Choir */}
+          <article className="choir-program-card childrens-choir-card featured">
+            <div className="choir-program-card-badge accent">
+              <Sparkles size={18} aria-hidden="true" />
+              <span>{content.programsOverview.childrensChoir.eyebrow}</span>
+            </div>
+            <h3 className="choir-program-card-title">{content.programsOverview.childrensChoir.title}</h3>
+            <p className="choir-program-card-summary">{content.programsOverview.childrensChoir.summary}</p>
+
+            <ul className="choir-program-card-features">
+              {content.programsOverview.childrensChoir.features.map((feature) => (
+                <li key={feature}>
+                  <CheckCircle2 size={16} aria-hidden="true" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="choir-program-card-actions">
+              <Button asChild>
+                <a href={content.programsOverview.childrensChoir.actionHref}>
+                  {content.programsOverview.childrensChoir.action} <ArrowRight size={16} />
+                </a>
+              </Button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* Program 1 Detail: Parent-Child Choir (Preserved existing information & registration details) */}
       <section className="public-section editorial-split" id="parent-child-choir">
         <div className="section-copy">
           <span className="eyebrow">{content.program.eyebrow}</span>
@@ -69,6 +148,11 @@ function Choir() {
                 {content.detailsAction} <ArrowRight size={16} />
               </a>
             </Button>
+            <Button asChild>
+              <a href="#join">
+                {content.hero.action} <ArrowRight size={16} />
+              </a>
+            </Button>
           </div>
         </div>
         <div className="program-note">
@@ -78,6 +162,7 @@ function Choir() {
         </div>
       </section>
 
+      {/* Program 2 Teaser & Gateway to Dedicated Children's Choir Page */}
       <section className="public-section tone-band" id="childrens-choir">
         <div className="editorial-split">
           <div className="section-copy">
@@ -93,12 +178,26 @@ function Choir() {
                 </p>
               ))}
             </div>
+            <div className="actions" style={{ marginTop: '24px' }}>
+              <Button asChild>
+                <a href="/choir-children">
+                  <Sparkles size={16} /> {content.programsOverview.childrensChoir.action} <ArrowRight size={16} />
+                </a>
+              </Button>
+            </div>
           </div>
           <div className="program-note">
             <Sparkles size={44} aria-hidden="true" />
             <span className="eyebrow">{content.childrensChoir.highlight.eyebrow}</span>
             <h3>{content.childrensChoir.highlight.title}</h3>
             <p>{content.childrensChoir.highlight.text}</p>
+            <div style={{ marginTop: '16px' }}>
+              <Button asChild variant="outline">
+                <a href="/choir-children#performances">
+                  {language === 'en' ? 'View Performances & Gallery' : '查看演出实况与图集'} <ArrowRight size={14} />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -120,6 +219,7 @@ function Choir() {
         </div>
       </section>
 
+      {/* Upcoming Section */}
       <section className="public-section dark-feature">
         <div>
           <span className="eyebrow">{content.upcoming.eyebrow}</span>
@@ -146,6 +246,7 @@ function Choir() {
         </div>
       </section>
 
+      {/* Registration & Contact CTA */}
       <section className="public-section cta-panel" id="join">
         <div>
           <h2>{content.cta.title}</h2>

@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react'
 
 import { useLanguage } from '../components/language-provider'
+import { Button } from '../components/ui/button'
 import { choirContent } from '../content/choir'
 
 export const Route = createFileRoute('/choir-details')({ component: ChoirDetails })
@@ -11,6 +13,16 @@ function ChoirDetails() {
 
   return (
     <main className="public-page">
+      <section className="choir-nav-bar">
+        <div className="choir-nav-bar-inner">
+          <Button asChild variant="ghost" size="sm" className="choir-back-btn">
+            <a href="/choir">
+              <ArrowLeft size={16} /> {content.childrensChoirPage.backAction}
+            </a>
+          </Button>
+        </div>
+      </section>
+
       <section className="public-title">
         <span className="eyebrow">{content.hero.eyebrow}</span>
         <h1>{content.hero.title}</h1>
@@ -18,6 +30,7 @@ function ChoirDetails() {
           <p key={paragraph}>{paragraph}</p>
         ))}
       </section>
+
       <section className="public-section">
         <div className="section-heading">
           <span className="eyebrow">{content.program.eyebrow}</span>
@@ -37,6 +50,7 @@ function ChoirDetails() {
           </div>
         </div>
       </section>
+
       <section className="public-section tone-band">
         <div className="section-heading">
           <span className="eyebrow">{content.childrensChoir.eyebrow}</span>
@@ -53,6 +67,13 @@ function ChoirDetails() {
                 <span>{item}</span>
               </div>
             ))}
+          </div>
+          <div className="actions" style={{ marginTop: '24px' }}>
+            <Button asChild>
+              <a href="/choir-children">
+                <Sparkles size={16} /> {content.programsOverview.childrensChoir.action} <ArrowRight size={16} />
+              </a>
+            </Button>
           </div>
         </div>
         <div className="choir-gallery-section">

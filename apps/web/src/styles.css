@@ -3675,3 +3675,504 @@ nav {
   }
 }
 
+/* ==========================================================================
+   Dual Choir Programs & Dedicated SAIMA Children's Choir Styles
+   ========================================================================== */
+
+/* Top Navigation Bar & Breadcrumb */
+.choir-nav-bar {
+  background: rgba(247, 242, 234, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--saima-border);
+  padding: 12px var(--saima-gutter);
+}
+
+.choir-nav-bar-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--saima-max);
+}
+
+.choir-back-btn {
+  color: var(--saima-navy);
+  font-weight: 600;
+  gap: 8px;
+}
+
+.choir-back-btn:hover {
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.choir-nav-quicklinks {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.choir-quicklink-pill {
+  align-items: center;
+  background: white;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 999px;
+  color: var(--saima-navy);
+  display: inline-flex;
+  font-size: 13.5px;
+  font-weight: 600;
+  gap: 6px;
+  padding: 6px 14px;
+  transition: all 180ms ease;
+}
+
+.choir-quicklink-pill:hover {
+  background: var(--saima-navy);
+  border-color: var(--saima-navy);
+  color: white;
+}
+
+.choir-quicklink-pill.highlight {
+  background: var(--saima-ochre);
+  border-color: var(--saima-ochre);
+  color: white;
+}
+
+.choir-quicklink-pill.highlight:hover {
+  background: #a9780e;
+  border-color: #a9780e;
+}
+
+.choir-subnav-pill.highlight {
+  background: #fdf6e7;
+  border-color: var(--saima-ochre);
+  color: #8c5d00;
+}
+
+.choir-subnav-pill.highlight:hover {
+  background: var(--saima-ochre);
+  color: white;
+}
+
+/* Two Programs Overview Grid on /choir */
+.choir-programs-overview-section {
+  padding-bottom: clamp(48px, 6vw, 84px);
+}
+
+.choir-programs-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 36px;
+}
+
+.choir-program-card {
+  background: #ffffff;
+  border: 1px solid var(--saima-border);
+  border-radius: 24px;
+  box-shadow: var(--saima-shadow);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 4vw, 40px);
+  position: relative;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.choir-program-card:hover {
+  border-color: rgba(200, 145, 22, 0.4);
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.12), 0 10px 24px rgba(200, 145, 22, 0.12);
+  transform: translateY(-3px);
+}
+
+.choir-program-card.featured {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+  border: 2px solid rgba(200, 145, 22, 0.5);
+}
+
+.choir-program-card-badge {
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 999px;
+  color: var(--saima-navy);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.choir-program-card-badge.accent {
+  background: #fdf3dc;
+  color: #925f05;
+}
+
+.choir-program-card-title {
+  color: var(--saima-navy);
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 18px 0 12px;
+}
+
+.choir-program-card-summary {
+  color: var(--saima-muted);
+  font-size: 15.5px;
+  line-height: 1.65;
+  margin: 0 0 20px;
+}
+
+.choir-program-card-features {
+  display: grid;
+  flex-grow: 1;
+  gap: 12px;
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.choir-program-card-features li {
+  align-items: flex-start;
+  color: var(--saima-text);
+  display: flex;
+  font-size: 14.5px;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.choir-program-card-features li svg {
+  color: var(--saima-ochre);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.choir-program-card-actions {
+  margin-top: auto;
+}
+
+/* Children's Choir Hero Section */
+.choir-children-hero {
+  border-radius: 28px;
+  margin: 20px var(--saima-gutter) 0;
+  max-width: var(--saima-max);
+  overflow: hidden;
+  position: relative;
+}
+
+.choir-children-hero-media {
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.choir-children-hero-img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  width: 100%;
+}
+
+.choir-children-hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.94) 0%,
+    rgba(15, 23, 42, 0.88) 50%,
+    rgba(30, 41, 59, 0.82) 100%
+  );
+  inset: 0;
+  position: absolute;
+}
+
+.choir-children-hero-content {
+  color: #ffffff;
+  padding: clamp(56px, 8vw, 108px) clamp(28px, 6vw, 72px);
+  position: relative;
+  z-index: 2;
+}
+
+.choir-eyebrow-badge {
+  background: rgba(200, 145, 22, 0.25);
+  border: 1px solid rgba(200, 145, 22, 0.5);
+  border-radius: 999px;
+  color: #f7d27e !important;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 16px;
+  text-transform: uppercase;
+}
+
+.choir-children-title {
+  color: #ffffff;
+  font-size: clamp(32px, 4.4vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 18px 0 12px;
+  max-width: 820px;
+}
+
+.choir-children-subtitle {
+  color: #fde8b3;
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0 0 20px;
+  max-width: 780px;
+}
+
+.choir-children-lead {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(15.5px, 1.3vw, 17.5px);
+  line-height: 1.7;
+  margin: 0 0 32px;
+  max-width: 760px;
+}
+
+.choir-hero-secondary-btn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.choir-hero-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.24) !important;
+  border-color: #ffffff !important;
+}
+
+/* 4 Core Pillars Section */
+.choir-pillars-section {
+  padding-top: clamp(48px, 6vw, 84px);
+}
+
+.choir-pillars-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 36px;
+}
+
+.choir-pillar-card {
+  background: #ffffff;
+  border: 1px solid var(--saima-border);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.choir-pillar-card:hover {
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.09);
+  transform: translateY(-2px);
+}
+
+.choir-pillar-icon-box {
+  align-items: center;
+  background: #faf5eb;
+  border-radius: 14px;
+  color: var(--saima-ochre);
+  display: flex;
+  height: 52px;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 52px;
+}
+
+.choir-pillar-card h3 {
+  color: var(--saima-navy);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 12px;
+}
+
+.choir-pillar-card p {
+  color: var(--saima-muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Integrated Actual Performances */
+.choir-performances-section {
+  padding-top: clamp(56px, 7vw, 96px);
+}
+
+.performances-list {
+  display: grid;
+  gap: 48px;
+  margin-top: 36px;
+}
+
+.performance-block-card {
+  background: #ffffff;
+  border: 1px solid var(--saima-border);
+  border-radius: 24px;
+  box-shadow: var(--saima-shadow);
+  overflow: hidden;
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.performance-badge-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.performance-number-badge {
+  background: var(--saima-navy);
+  border-radius: 999px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  text-transform: uppercase;
+}
+
+.performance-category-tag {
+  background: #fdf3dc;
+  border-radius: 999px;
+  color: #925f05;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+}
+
+.performance-block-title {
+  color: var(--saima-navy);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 20px;
+}
+
+.performance-meta-grid {
+  background: #faf8f5;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  margin-bottom: 24px;
+  padding: 18px 24px;
+}
+
+.performance-meta-item {
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+}
+
+.performance-meta-item svg {
+  color: var(--saima-ochre);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.performance-meta-item strong {
+  color: var(--saima-navy);
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.performance-meta-item span {
+  color: var(--saima-muted);
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.repertoire-tag {
+  color: #925f05 !important;
+  font-weight: 700 !important;
+}
+
+.performance-descriptions {
+  color: var(--saima-text);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.performance-descriptions p {
+  margin: 0 0 16px;
+}
+
+.performance-descriptions p:last-child {
+  margin-bottom: 0;
+}
+
+.performance-gallery-heading {
+  align-items: center;
+  color: var(--saima-navy);
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+.performance-gallery-heading svg {
+  color: var(--saima-ochre);
+}
+
+.photo-count-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1080px) {
+  .choir-pillars-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-count-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 840px) {
+  .choir-programs-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .choir-children-hero {
+    margin: 16px 12px 0;
+  }
+
+  .choir-nav-bar {
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .choir-pillars-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .photo-count-4 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .performance-meta-grid {
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+  }
+}
+
+

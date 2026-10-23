@@ -26,6 +26,7 @@ const implementedPublicRoutes = new Set([
   '/youth-details',
   '/choir',
   '/choir-details',
+  '/choir-children',
   '/gallery',
   '/gallery-details',
   '/courses',
@@ -309,18 +310,60 @@ describe('public site content', () => {
     expect(concertEn?.featuredArtists?.list[2]?.bio.join(' ')).toContain('ERA (Exceptional Rising Artists)')
   })
 
-  it('provides stacked Parent-Child Choir and Children’s Choir sections with anchor nav and choir images', () => {
+  it('clearly presents Parent-Child Choir and SAIMA Children’s Choir programs with dedicated performance integration', () => {
     for (const language of ['en', 'zh'] as const) {
       const choir = choirContent[language]
-      expect(choir.sectionsNav).toHaveLength(2)
-      expect(choir.sectionsNav?.map((item) => item.id)).toEqual(['parent-child-choir', 'childrens-choir'])
-      expect(choir.childrensChoir).toBeTruthy()
-      expect(choir.childrensChoir?.gallery.map((image) => image.url)).toEqual([
-        '/images/saima/choir.jpg',
-        '/images/saima/choir1.jpg',
-        '/images/saima/choir2.jpeg',
-      ])
+      expect(choir.programsOverview.parentChild).toBeTruthy()
+      expect(choir.programsOverview.childrensChoir).toBeTruthy()
+      expect(choir.programsOverview.childrensChoir.actionHref).toBe('/choir-children')
+
+      // Preserves existing parent-child choir information & participation details
+      expect(choir.program.title).toBeTruthy()
+      expect(choir.program.paragraphs.length).toBeGreaterThanOrEqual(4)
+      expect(choir.participation.text).toBeTruthy()
+
+      // Children's choir details & educational pillars
+      const childrenPage = choir.childrensChoirPage
+      expect(childrenPage.title).toContain(language === 'en' ? "Children’s Choir" : '儿童合唱团')
+      expect(childrenPage.pillars).toHaveLength(4)
+      const pillarTitles = childrenPage.pillars.map((p) => p.title).join(' ')
+      if (language === 'en') {
+        expect(pillarTitles).toContain('Musical Development')
+        expect(pillarTitles).toContain('Vocal Training')
+        expect(pillarTitles).toContain('Performance')
+        expect(pillarTitles).toContain('Cultural Diversity')
+      } else {
+        expect(pillarTitles).toContain('音乐')
+        expect(pillarTitles).toContain('声乐')
+        expect(pillarTitles).toContain('舞台')
+        expect(pillarTitles).toContain('多元文化')
+      }
+
+      // Integrated actual performances
+      expect(childrenPage.performances.length).toBeGreaterThanOrEqual(2)
+      const nationalDayPerf = childrenPage.performances.find((p) => p.id === 'national-day-20260929')
+      expect(nationalDayPerf).toBeTruthy()
+      expect(nationalDayPerf?.date).toContain('2026')
+      expect(nationalDayPerf?.repertoire).toContain(language === 'en' ? '盛世星河' : '盛世星河')
+      expect(nationalDayPerf?.photos.length).toBeGreaterThanOrEqual(3)
+      expect(nationalDayPerf?.photos.map((p) => p.url)).toEqual(
+        expect.arrayContaining([
+          '/images/saima/choir1.jpg',
+          '/images/saima/choir.jpg',
+          '/images/saima/choir2.jpeg',
+        ]),
+      )
+
+      const galaPerf = childrenPage.performances.find((p) => p.id === 'gala-concert-20261016')
+      expect(galaPerf).toBeTruthy()
+      expect(galaPerf?.photos.length).toBeGreaterThanOrEqual(3)
+      expect(galaPerf?.photos.map((p) => p.url)).toEqual(
+        expect.arrayContaining([
+          '/images/saima/choir-performances/20261016-stage.jpg',
+          '/images/saima/choir-performances/20261016-singing.jpg',
+          '/images/saima/choir-performances/20261016-choir-group.jpg',
+        ]),
+      )
     }
-    expect(choirContent.en.childrensChoir?.title).toContain('Children’s Choir')
   })
 })

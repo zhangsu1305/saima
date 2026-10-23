@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AboutDetailsRouteImport } from './routes/about-details'
 import { Route as ChoirRouteImport } from './routes/choir'
+import { Route as ChoirChildrenRouteImport } from './routes/choir-children'
 import { Route as ChoirDetailsRouteImport } from './routes/choir-details'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoursesRouteImport } from './routes/courses'
@@ -68,6 +69,11 @@ const AboutDetailsRoute = AboutDetailsRouteImport.update({
 const ChoirRoute = ChoirRouteImport.update({
   id: '/choir',
   path: '/choir',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChoirChildrenRoute = ChoirChildrenRouteImport.update({
+  id: '/choir-children',
+  path: '/choir-children',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChoirDetailsRoute = ChoirDetailsRouteImport.update({
@@ -265,6 +271,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/about-details': typeof AboutDetailsRoute
   '/choir': typeof ChoirRoute
+  '/choir-children': typeof ChoirChildrenRoute
   '/choir-details': typeof ChoirDetailsRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
@@ -307,6 +314,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/about-details': typeof AboutDetailsRoute
   '/choir': typeof ChoirRoute
+  '/choir-children': typeof ChoirChildrenRoute
   '/choir-details': typeof ChoirDetailsRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
@@ -350,6 +358,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/about-details': typeof AboutDetailsRoute
   '/choir': typeof ChoirRoute
+  '/choir-children': typeof ChoirChildrenRoute
   '/choir-details': typeof ChoirDetailsRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
@@ -394,6 +403,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about-details'
     | '/choir'
+    | '/choir-children'
     | '/choir-details'
     | '/contact'
     | '/courses'
@@ -436,6 +446,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about-details'
     | '/choir'
+    | '/choir-children'
     | '/choir-details'
     | '/contact'
     | '/courses'
@@ -478,6 +489,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about-details'
     | '/choir'
+    | '/choir-children'
     | '/choir-details'
     | '/contact'
     | '/courses'
@@ -521,6 +533,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AboutDetailsRoute: typeof AboutDetailsRoute
   ChoirRoute: typeof ChoirRoute
+  ChoirChildrenRoute: typeof ChoirChildrenRoute
   ChoirDetailsRoute: typeof ChoirDetailsRoute
   ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
@@ -569,6 +582,13 @@ declare module '@tanstack/react-router' {
       path: '/choir'
       fullPath: '/choir'
       preLoaderRoute: typeof ChoirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/choir-children': {
+      id: '/choir-children'
+      path: '/choir-children'
+      fullPath: '/choir-children'
+      preLoaderRoute: typeof ChoirChildrenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/choir-details': {
@@ -906,6 +926,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AboutDetailsRoute: AboutDetailsRoute,
   ChoirRoute: ChoirRoute,
+  ChoirChildrenRoute: ChoirChildrenRoute,
   ChoirDetailsRoute: ChoirDetailsRoute,
   ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
