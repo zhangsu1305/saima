@@ -116,7 +116,7 @@ const voicesBeyondBordersImages = [
   { file: 'gallery/gallery-23.jpg', height: 365 },
   { file: 'gallery/gallery-24.jpg', height: 403 },
 ].map(({ file, height }, index) => {
-  const url = eventAssetUrl('20261024', file)
+  const url = `/events/20261024/${file}`
 
   return {
     id: `20261024-image-${index + 1}`,

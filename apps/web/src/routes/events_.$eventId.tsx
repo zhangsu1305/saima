@@ -166,8 +166,8 @@ function EventHeader({
     <section className="public-title">
       <span className="eyebrow">{statusLabel}</span>
       <h1>{event.title}</h1>
-      {event.subtitle ? <p>{event.subtitle}</p> : null}
-      <p className="muted inline-meta">
+      {event.subtitle ? <p className="event-header-subtitle">{event.subtitle}</p> : null}
+      <p className="muted inline-meta event-header-location">
         <MapPin size={16} aria-hidden="true" /> {event.location}
       </p>
       <div className="actions centered-actions">

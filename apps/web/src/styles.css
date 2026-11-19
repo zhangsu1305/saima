@@ -1106,6 +1106,8 @@ nav {
 .public-title p {
   font-size: clamp(18px, 2vw, 22px);
   line-height: 1.65;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 720px;
 }
 
@@ -1369,6 +1371,21 @@ nav {
   margin: 0 auto;
   max-width: 980px;
   padding: clamp(72px, 10vw, 120px) var(--saima-gutter) clamp(32px, 5vw, 64px);
+  text-align: center;
+}
+
+.public-title .inline-meta,
+.event-header-location {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.event-header-subtitle {
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
@@ -3280,6 +3297,12 @@ nav {
   .contact-methods p,
   .check-list p {
     align-items: flex-start;
+  }
+
+  .public-title .inline-meta,
+  .event-header-location {
+    align-items: center;
+    justify-content: center;
   }
 
   .inline-meta svg,
