@@ -309,6 +309,11 @@ describe('public site content', () => {
     expect(concertEn?.featuredArtists?.list[0]?.bio.join(' ')).toContain('youngest performer and winner in the history of YVA')
     expect(concertEn?.featuredArtists?.list[1]?.bio.join(' ')).toContain('Homage to Black Sabbath')
     expect(concertEn?.featuredArtists?.list[2]?.bio.join(' ')).toContain('ERA (Exceptional Rising Artists)')
+
+    expect(concertEn?.galleryImages).toHaveLength(24)
+    expect(concertZh?.galleryImages).toHaveLength(24)
+    expect(concertEn?.galleryImages?.[0]?.url).toBe('/events/20261024/gallery/gallery-01.jpg')
+    expect(concertEn?.galleryImages?.[23]?.url).toBe('/events/20261024/gallery/gallery-24.jpg')
   })
 
   it('clearly presents Parent-Child Choir and SAIMA Children’s Choir programs with dedicated performance integration', () => {

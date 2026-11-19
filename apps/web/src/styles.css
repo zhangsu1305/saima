@@ -2128,9 +2128,15 @@ nav {
   font-size: 24px;
 }
 
+.event-gallery-primary {
+  padding-top: 10px;
+}
+
 .event-masonry {
-  height: clamp(980px, 112vw, 1480px);
+  height: auto;
+  min-height: 480px;
   position: relative;
+  width: 100%;
 }
 
 .event-row time {
@@ -2529,7 +2535,7 @@ nav {
   }
 
   .event-masonry {
-    height: 3600px;
+    height: auto;
   }
 
   .masonry-grid {
@@ -2740,7 +2746,7 @@ nav {
   }
 
   .event-masonry {
-    height: min(3600px, 760vw);
+    height: auto;
   }
 }
 
@@ -3283,7 +3289,7 @@ nav {
   }
 
   .event-masonry {
-    height: 4200px;
+    height: auto;
   }
 
   .site-footer-grid {

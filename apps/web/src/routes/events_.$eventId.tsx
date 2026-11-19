@@ -86,14 +86,37 @@ function EventPage() {
     return <EventNotFound content={content} />
   }
 
-  const ticketSale = getTicketSaleConfig(event.id)
+  const isPast = getEventStatus(event) === 'past'
+  const ticketSale = isPast ? undefined : getTicketSaleConfig(event.id)
   const statusLabel = content.labels[getEventStatus(event)]
+  const isGalleryPrimary = Boolean(isPast && event.galleryImages?.length)
 
   return (
     <main className="public-page">
-      <EventHeader event={event} labels={content.labels} statusLabel={statusLabel} />
-      <EventOverview event={event} labels={content.labels} posterImage={event.posterImage} />
-      {ticketSale?.isActive ? <TicketSaleModule eventPublicId={event.id} /> : null}
+      <EventHeader
+        event={event}
+        labels={content.labels}
+        statusLabel={statusLabel}
+        hasGallery={Boolean(event.galleryImages?.length)}
+        hasOverview={Boolean(event.paragraphs?.length || event.overviewSections?.length || event.posterImage)}
+      />
+
+      {isGalleryPrimary ? (
+        <>
+          <EventGallerySection
+            galleryImages={event.galleryImages!}
+            labels={content.labels}
+            isPrimary
+          />
+          <EventOverview event={event} labels={content.labels} posterImage={event.posterImage} />
+        </>
+      ) : (
+        <>
+          <EventOverview event={event} labels={content.labels} posterImage={event.posterImage} />
+          {ticketSale?.isActive ? <TicketSaleModule eventPublicId={event.id} /> : null}
+        </>
+      )}
+
       {event.featuredArtists ? <EventFeaturedArtistsSection featuredArtists={event.featuredArtists} /> : null}
       {event.performers ? <EventPerformersSection performers={event.performers} /> : null}
       {event.programImage || event.programSchedule ? (
@@ -106,7 +129,9 @@ function EventPage() {
       {event.details ? <EventDetailsSection details={event.details} labels={content.labels} /> : null}
       {event.resources ? <EventResourcesSection labels={content.labels} resources={event.resources} /> : null}
       {event.videos ? <EventVideosSection labels={content.labels} videos={event.videos} /> : null}
-      {event.galleryImages ? <EventGallerySection galleryImages={event.galleryImages} labels={content.labels} /> : null}
+      {!isGalleryPrimary && event.galleryImages ? (
+        <EventGallerySection galleryImages={event.galleryImages} labels={content.labels} />
+      ) : null}
     </main>
   )
 }
@@ -124,7 +149,19 @@ function EventNotFound({ content }: { content: EventContent }) {
   )
 }
 
-function EventHeader({ event, labels, statusLabel }: { event: EventArticle; labels: EventLabels; statusLabel: string }) {
+function EventHeader({
+  event,
+  labels,
+  statusLabel,
+  hasGallery,
+  hasOverview,
+}: {
+  event: EventArticle
+  labels: EventLabels
+  statusLabel: string
+  hasGallery?: boolean
+  hasOverview?: boolean
+}) {
   return (
     <section className="public-title">
       <span className="eyebrow">{statusLabel}</span>
@@ -133,7 +170,27 @@ function EventHeader({ event, labels, statusLabel }: { event: EventArticle; labe
       <p className="muted inline-meta">
         <MapPin size={16} aria-hidden="true" /> {event.location}
       </p>
-      <BackToEventsButton label={labels.backToEvents} />
+      <div className="actions centered-actions">
+        <Button asChild variant="outline">
+          <a href="/events">
+            <ArrowLeft size={16} /> {labels.backToEvents}
+          </a>
+        </Button>
+        {hasGallery && (
+          <Button asChild variant="outline">
+            <a href="#gallery">
+              <Sparkles size={16} /> {labels.gallery}
+            </a>
+          </Button>
+        )}
+        {hasOverview && (
+          <Button asChild variant="outline">
+            <a href="#overview">
+              <Music size={16} /> {labels.eventDetails}
+            </a>
+          </Button>
+        )}
+      </div>
     </section>
   )
 }
@@ -152,7 +209,7 @@ function BackToEventsButton({ label }: { label: string }) {
 
 function EventOverview({ event, labels, posterImage }: { event: EventArticle; labels: EventLabels; posterImage: EventArticle['posterImage'] | undefined }) {
   return (
-    <section className="public-section">
+    <section className="public-section" id="overview">
       {posterImage && (
         <div className="event-poster">
           <img src={posterImage.url} alt={posterImage.label} />
@@ -203,7 +260,7 @@ function EventFeaturedArtistsSection({
   featuredArtists: NonNullable<EventArticle['featuredArtists']>
 }) {
   return (
-    <section className="public-section">
+    <section className="public-section" id="artists">
       <div className="section-heading">
         <span className="eyebrow">{featuredArtists.eyebrow}</span>
         <h2>{featuredArtists.title}</h2>
@@ -456,22 +513,24 @@ function EventVideosSection({ labels, videos }: { labels: EventLabels; videos: N
 function EventGallerySection({
   galleryImages,
   labels,
+  isPrimary = false,
 }: {
   galleryImages: NonNullable<EventArticle['galleryImages']>
   labels: EventLabels
+  isPrimary?: boolean
 }) {
   return (
-    <section className="public-section">
+    <section className={`public-section ${isPrimary ? 'event-gallery-primary' : ''}`} id="gallery">
       <SectionHeading eyebrow={labels.gallery} title={labels.gallery} />
       <div className="event-masonry">
         <Masonry
           items={galleryImages}
           ease="power3.out"
           duration={0.6}
-          stagger={0.05}
+          stagger={0.04}
           animateFrom="bottom"
           scaleOnHover
-          hoverScale={0.95}
+          hoverScale={0.96}
           blurToFocus
           colorShiftOnHover={false}
         />

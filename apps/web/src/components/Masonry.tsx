@@ -148,6 +148,11 @@ const Masonry: React.FC<MasonryProps> = ({
     });
   }, [columns, items, width]);
 
+  const totalHeight = useMemo(() => {
+    if (!grid.length) return 0;
+    return Math.max(...grid.map((item) => item.y + item.h), 0);
+  }, [grid]);
+
   const hasMounted = useRef(false);
 
   useLayoutEffect(() => {
@@ -241,7 +246,11 @@ const Masonry: React.FC<MasonryProps> = ({
   };
 
   return (
-    <div ref={containerRef} className="list">
+    <div
+      ref={containerRef}
+      className="list"
+      style={{ height: totalHeight > 0 ? `${Math.ceil(totalHeight)}px` : undefined }}
+    >
       {grid.map(item => {
         return (
           <div

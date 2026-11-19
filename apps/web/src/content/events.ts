@@ -90,6 +90,42 @@ const impressionsOfChinaImages = [
   }
 })
 
+const voicesBeyondBordersImages = [
+  { file: 'gallery/gallery-01.jpg', height: 390 },
+  { file: 'gallery/gallery-02.jpg', height: 390 },
+  { file: 'gallery/gallery-03.jpg', height: 516 },
+  { file: 'gallery/gallery-04.jpg', height: 390 },
+  { file: 'gallery/gallery-05.jpg', height: 390 },
+  { file: 'gallery/gallery-06.jpg', height: 516 },
+  { file: 'gallery/gallery-07.jpg', height: 402 },
+  { file: 'gallery/gallery-08.jpg', height: 536 },
+  { file: 'gallery/gallery-09.jpg', height: 440 },
+  { file: 'gallery/gallery-10.jpg', height: 536 },
+  { file: 'gallery/gallery-11.jpg', height: 402 },
+  { file: 'gallery/gallery-12.jpg', height: 390 },
+  { file: 'gallery/gallery-13.jpg', height: 516 },
+  { file: 'gallery/gallery-14.jpg', height: 390 },
+  { file: 'gallery/gallery-15.jpg', height: 390 },
+  { file: 'gallery/gallery-16.jpg', height: 390 },
+  { file: 'gallery/gallery-17.jpg', height: 403 },
+  { file: 'gallery/gallery-18.jpg', height: 402 },
+  { file: 'gallery/gallery-19.jpg', height: 516 },
+  { file: 'gallery/gallery-20.jpg', height: 390 },
+  { file: 'gallery/gallery-21.jpg', height: 390 },
+  { file: 'gallery/gallery-22.jpg', height: 365 },
+  { file: 'gallery/gallery-23.jpg', height: 365 },
+  { file: 'gallery/gallery-24.jpg', height: 403 },
+].map(({ file, height }, index) => {
+  const url = eventAssetUrl('20261024', file)
+
+  return {
+    id: `20261024-image-${index + 1}`,
+    img: url,
+    url,
+    height,
+  }
+})
+
 export function getEventStatus(event: Pick<EventArticle, 'startDate'>, today = new Date()): EventStatus {
   return event.startDate < toDateKey(today) ? 'past' : 'upcoming'
 }
@@ -599,6 +635,7 @@ export const eventsContent: Localized<EventsContent> = {
           label: 'Concert Poster',
           url: '/events/20261024/concert-poster.png',
         },
+        galleryImages: voicesBeyondBordersImages,
       },
       {
         id: '20250413',
@@ -825,6 +862,7 @@ export const eventsContent: Localized<EventsContent> = {
           label: '音乐会海报',
           url: '/events/20261024/concert-poster.png',
         },
+        galleryImages: voicesBeyondBordersImages,
       },
       {
         id: '20250413',
