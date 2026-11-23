@@ -16,6 +16,7 @@ export const siteImages: Record<ImageKey, string> = {
   instrumentalPerformance: '/images/saima/instrumental_performance.jpeg',
   galleryPerformance: '/images/saima/gallery-performance.jpg',
   choirHall: '/images/saima/choir-hall.jpg',
+  choirHero: '/images/saima/choir-hero.jpg',
 }
 
 export const sharedContent = {

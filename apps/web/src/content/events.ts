@@ -90,7 +90,7 @@ const impressionsOfChinaImages = [
   }
 })
 
-const voicesBeyondBordersImages = [
+const harmonyOfHopeImages = [
   { file: 'gallery/gallery-01.jpg', height: 390 },
   { file: 'gallery/gallery-02.jpg', height: 390 },
   { file: 'gallery/gallery-03.jpg', height: 516 },
@@ -116,10 +116,10 @@ const voicesBeyondBordersImages = [
   { file: 'gallery/gallery-23.jpg', height: 365 },
   { file: 'gallery/gallery-24.jpg', height: 403 },
 ].map(({ file, height }, index) => {
-  const url = `/events/20261024/${file}`
+  const url = `/events/20261016/${file}`
 
   return {
-    id: `20261024-image-${index + 1}`,
+    id: `20261016-image-${index + 1}`,
     img: url,
     url,
     height,
@@ -499,38 +499,72 @@ export const eventsContent: Localized<EventsContent> = {
         id: '20261016',
         href: eventHref('20261016'),
         startDate: '2026-10-16',
-        title: 'A Dream for Every Child',
+        title: 'Harmony of Hope – Every Child Has a Dream',
         subtitle:
-          'Elsa and Her Students: A Charity Musical Theatre Concert Supporting Children with Cancer and Their Families',
-        seoTitle: 'A Dream for Every Child | Adelaide Charity Concert | 16 October 2026',
+          'Young Voices, Big Hearts: A Charity Concert Supporting Children with Cancer',
+        seoTitle: 'Harmony of Hope – Every Child Has a Dream | Adelaide Charity Concert',
         seoDescription:
-          'An award-winning cast of young vocalists performs musical theatre favourites at Adelaide’s Royalty Theatre, raising funds for children and families affected by cancer. Tickets from $25.',
+          'Relive Harmony of Hope – Every Child Has a Dream, presented by SAIMA and Elsa and her Young Stars at the Royalty Theatre, raising AUD $2,114.39 for the Childhood Cancer Association.',
         date: '16 Oct 2026',
-        location: 'Royalty Theatre',
+        location: 'Royalty Theatre, Adelaide',
+        leadQuote: 'When children sing for other children, music becomes hope.',
         paragraphs: [
-          'South Australian International Musicians Association is preparing its next charity concert, A Dream for Every Child, planned for 16 October 2026. This musical theatre concert will be led by Elsa Tian and performed by her students, raising funds for children with cancer and their families.',
-          'This concert is built around the voices, stories, and dreams of children. Through musical theatre songs from beloved stage and screen works, young performers will use music to express courage, imagination, love, hope, and resilience.',
-          'The program will include songs from well-known musicals and films such as The Lion King, Matilda, The Little Mermaid, Frozen, The Phantom of the Opera, Les Misérables, The Greatest Showman, and Miss Saigon. These works speak to childhood, identity, bravery, family love, loss, dreams, and the strength to keep going.',
-          'At the heart of this concert is a simple belief: every child deserves the chance to dream, to be loved, and to be supported. Through performance and community giving, SAIMA hopes to offer care and practical support to families facing the challenges of childhood cancer.',
-          'This event will also give young singers a meaningful opportunity to use their talents for a charitable cause. By standing on stage for other children, students will learn that music is not only about performance, but also about empathy, responsibility, and bringing hope to others.',
+          'On 16 October 2026, the South Australian International Musicians Association (SAIMA) proudly presented Harmony of Hope – Every Child Has a Dream, a charity concert at Adelaide’s historic Royalty Theatre in support of the Childhood Cancer Association.',
+          'As part of the Elsa and her Young Stars concert series, the event brought together talented young performers aged between 5 and 15. Under the artistic direction of soprano and vocal educator Yiyin Elsa Tian, the children presented a programme of beloved musical theatre and film classics, sharing their voices, expressive performances and passion for music in an evening that brought together artistic excellence, education and community spirit.',
+          'More than a showcase of musical achievement, the concert provided an opportunity for young musicians to connect with their community through the arts and use their talents to make a meaningful difference.',
+        ],
+        overviewSections: [
+          {
+            heading: 'From the Classroom to the Stage: Artistic Development and Professional Performance',
+            paragraphs: [
+              'Harmony of Hope placed equal emphasis on musical development and the broader artistic growth of its young performers through a fully staged concert experience.',
+              'From repertoire selection, vocal training and musical interpretation to stagecraft and overall production coordination, the creative team sought to provide meaningful performance opportunities that were both artistically challenging and educationally enriching for singers of different ages and stages of development.',
+              'The programme featured well-loved selections from musical theatre and film, allowing young performers to explore a variety of musical styles and develop their vocal technique, emotional expression and communication with an audience.',
+              'For many of the young singers, the concert represented a significant milestone in their musical journey — taking skills nurtured in weekly lessons and rehearsals and bringing them to life on a historic Adelaide stage before an audience of family, friends and community supporters.',
+            ],
+          },
+          {
+            heading: 'Young Voices, Big Hearts: Making a Difference Through Music',
+            paragraphs: [
+              'At the heart of Harmony of Hope was a commitment to community and care.',
+              'Through ticket sales, donations and the generous support of the community, the concert raised vital funds for the Childhood Cancer Association, helping provide practical, emotional and financial support to children with cancer and their families across South Australia.',
+              'By participating in a project dedicated to supporting others, the young performers learned that music can be more than personal achievement — it can be a source of comfort, hope and connection.',
+            ],
+            callouts: [
+              'Through the generosity of audience members, families and community supporters, the concert raised a total of AUD $2,114.39 in support of the Childhood Cancer Association and its important work with children affected by cancer and their families.',
+            ],
+          },
+          {
+            heading: 'Music Education Beyond the Stage',
+            paragraphs: [
+              'The concert also reflected SAIMA’s broader vision for music education: one that values discipline, creativity, ensemble collaboration and social responsibility.',
+              'Through months of preparation, rehearsals and teamwork, students not only developed their vocal abilities, stage presence and musicianship, but also gained confidence, resilience and a deeper understanding of the role artists can play within the wider community.',
+              'For SAIMA, supporting young musicians means nurturing both artistic excellence and a generous spirit — helping the next generation of performers grow into confident, thoughtful and community-minded individuals.',
+            ],
+          },
+          {
+            heading: 'With Heartfelt Gratitude',
+            paragraphs: [
+              'SAIMA extends its sincere thanks to:',
+              '• The Childhood Cancer Association for their inspiring work and partnership',
+              '• The families, parents and volunteers whose dedication and support made this event possible',
+              '• The audience members whose attendance and generosity contributed to this meaningful cause',
+              '• The young performers of Elsa and her Young Stars, whose courage, talent and dedication brought this concert to life',
+            ],
+            footer: 'When children sing for other children, music becomes hope.',
+          },
         ],
         details: [
-          { label: 'Project Name', value: 'Elsa & Her Children – A Dream for Every Child' },
+          { label: 'Concert Title', value: 'Harmony of Hope – Every Child Has a Dream' },
+          { label: 'Concert Series', value: 'SAIMA Concert Series | Elsa and her Young Stars' },
           { label: 'Date', value: '16 October 2026' },
-          { label: 'Venue', value: 'Royalty Theatre' },
-          { label: 'Presenter', value: 'South Australia International Musicians Association' },
-          { label: 'Performers', value: 'Approximately 18–20 award-winning young vocalists aged 8–15' },
-          {
-            label: 'Artistic Standard',
-            value:
-              'All invited performers have previously achieved top-three placings in vocal competitions, with more than half being First Prize winners at the Adelaide Eisteddfod.',
-          },
-          { label: 'Audience Capacity', value: 'Approximately 500 seats' },
-          {
-            label: 'Purpose',
-            value:
-              'To inspire young people to serve the community through music while raising funds to support families affected by childhood cancer.',
-          },
+          { label: 'Venue', value: 'Royalty Theatre, Adelaide' },
+          { label: 'Presented by', value: 'South Australian International Musicians Association (SAIMA)' },
+          { label: 'Director, Producer & Vocal Coach', value: 'Yiyin Elsa Tian' },
+          { label: 'Assistant Director & Stage Manager', value: 'Callum McGing' },
+          { label: 'Beneficiary Charity', value: 'Childhood Cancer Association' },
+          { label: 'Funds Raised', value: 'AUD $2,114.39' },
+          { label: 'Performers', value: 'Elsa and her Young Stars (young vocalists aged 5–15)' },
         ],
         performers: charityConcertPerformersEn,
         programSchedule: charityConcertScheduleEn,
@@ -542,6 +576,18 @@ export const eventsContent: Localized<EventsContent> = {
           label: 'Concert Program',
           url: eventAssetUrl('20261016', 'program-v2.jpg', '20260906'),
         },
+        videos: [
+          {
+            title: 'Full Recorded Concert Performance',
+            embedId: 'dPypqQAAWNs',
+          },
+          {
+            title: 'Concert Highlights & Summary Video',
+            src: '/events/20261016/summary.mp4',
+            type: 'video/mp4',
+          },
+        ],
+        galleryImages: harmonyOfHopeImages,
         resources: [
           {
             label: 'Authority to Fundraise',
@@ -635,7 +681,6 @@ export const eventsContent: Localized<EventsContent> = {
           label: 'Concert Poster',
           url: '/events/20261024/concert-poster.png',
         },
-        galleryImages: voicesBeyondBordersImages,
       },
       {
         id: '20250413',
@@ -733,32 +778,71 @@ export const eventsContent: Localized<EventsContent> = {
         id: '20261016',
         href: eventHref('20261016'),
         startDate: '2026-10-16',
-        title: '《每个孩子都应有梦想》',
-        subtitle: 'Elsa 和她的孩子们：支持儿童癌症家庭慈善音乐剧音乐会',
-        seoTitle: 'A Dream for Every Child | Adelaide Charity Concert | 16 October 2026',
+        title: '《希望之声——每一个孩子都有梦想》',
+        subtitle: '童声大爱：支持患癌儿童慈善音乐会',
+        seoTitle: '《希望之声——每一个孩子都有梦想》慈善音乐会 | SAIMA',
         seoDescription:
-          'An award-winning cast of young vocalists performs musical theatre favourites at Adelaide’s Royalty Theatre, raising funds for children and families affected by cancer. Tickets from $25.',
+          '回顾南澳国际音乐家协会（SAIMA）与 Elsa 和她的小童星在 Royalty Theatre 举办的《希望之声》慈善音乐会，为南澳儿童癌症协会筹集 2,114.39 澳元善款。',
         date: '2026年10月16日',
-        location: 'Royalty Theatre',
+        location: '阿德莱德 · Royalty Theatre',
+        leadQuote: '当孩子们为其他孩子唱歌，音乐便化作了希望。',
         paragraphs: [
-          '南澳国际音乐协会正在筹备下一场慈善音乐会《每个孩子都应有梦想》，计划于 2026年10月16日 举办。这是一场由 Elsa Tian 带领学生共同呈现的音乐剧慈善音乐会，旨在为患癌儿童及其家庭筹集善款。',
-          '本场音乐会围绕孩子们的声音、故事与梦想展开。年轻表演者将通过大家熟悉和喜爱的音乐剧及电影歌曲，表达勇气、想象、爱、希望与坚韧。',
-          '节目将包括来自《狮子王》《Matilda》《小美人鱼》《冰雪奇缘》《歌剧魅影》《悲惨世界》《马戏之王》和《西贡小姐》等经典音乐剧与电影作品中的歌曲。这些作品共同讲述童年、身份、勇敢、亲情、失去、梦想，以及继续前行的力量。',
-          '本场音乐会的核心信念很简单：每一个孩子都应该拥有梦想、被爱和被支持的机会。我们希望通过音乐表演与社区捐助，为正在面对儿童癌症挑战的家庭送去关怀与实际支持。',
-          '这场活动也将为年轻歌者提供一个有意义的舞台，让他们能够用自己的才华支持公益事业。当孩子们为了其他孩子站上舞台时，他们将学习到：音乐不仅是表演，也是同理心、责任感，以及为他人带去希望的方式。',
+          '2026年10月16日，南澳国际音乐家协会（SAIMA）在阿德莱德具有历史意义的 Royalty Theatre 成功举办了《希望之声——每一个孩子都有梦想》（Harmony of Hope – Every Child Has a Dream）慈善音乐会，为南澳儿童癌症协会（Childhood Cancer Association）筹集善款。',
+          '作为“Elsa 和她的小童星”（Elsa and her Young Stars）系列音乐会的重要呈现，本次活动汇聚了5至15岁富有才华的年轻表演者。在女高音歌唱家、声乐教育家田依因（Yiyin Elsa Tian）的艺术指导下，孩子们呈现了一台经典的音乐剧与电影名曲，以纯真动人的歌声、生动的舞台表演与对音乐的热爱，共同谱写了一个融合艺术水准、音乐教育与社区公益精神的美好夜晚。',
+          '这不仅是一场青少年声乐艺术成果的精彩展示，更是年轻音乐学子通过艺术与社区建立联结、用自身才华为社会奉献爱心与温暖的珍贵实践。',
+        ],
+        overviewSections: [
+          {
+            heading: '从课堂走向剧场：艺术成长与专业舞台实践',
+            paragraphs: [
+              '《希望之声》通过完整的剧场音乐会制作体验，将音乐技能的锤炼与青少年表演者的综合艺术素养培养紧密结合。',
+              '从曲目筛选、声乐训练、音乐诠释到舞台调度与剧场整体统筹，创作团队致力于为不同年龄阶段与学习进程的年轻小歌者提供既具艺术挑战性、又富教育意义的高品质舞台实践。',
+              '音乐会曲目精选自备受喜爱的经典音乐剧与电影名作，让小演员们深入体会多样的音乐风格，磨练声乐技巧、情感表达以及与现场观众交流的能力。',
+              '对许多年轻歌者而言，本场音乐会是他们音乐道路上的重要里程碑——将在日常声乐训练与合唱排练中沉淀的技艺，自信地绽放在阿德莱德具有历史传统的剧场舞台上，面对满座的亲友与社区观众。',
+            ],
+          },
+          {
+            heading: '童声大爱：用音乐点亮希望与关怀',
+            paragraphs: [
+              '《希望之声》的核心始终是对社区与生命的深切关怀。',
+              '通过门票销售、现场募捐以及社会各界的慷慨支持，音乐会为南澳儿童癌症协会（Childhood Cancer Association）筹集了重要善款，为全南澳正在与癌症抗争的患病儿童及其家庭提供切实的情感、生活与经济援助。',
+              '通过参与这项以关爱他人为核心的公益活动，年轻小演员们深刻体会到：音乐绝不仅仅是个人的技艺展示与比赛成绩，它更能成为慰藉心灵、传递希望与联结人心的温暖力量。',
+            ],
+            callouts: [
+              '在全体到场观众、参演家庭与社区爱心人士的慷慨支持下，本场音乐会共筹集善款 2,114.39 澳元（AUD $2,114.39），全额支持南澳儿童癌症协会（Childhood Cancer Association）及其关爱患癌儿童与家庭的重要工作。',
+            ],
+          },
+          {
+            heading: '超越舞台的音乐教育理念',
+            paragraphs: [
+              '本场音乐会生动体现了 SAIMA 对音乐教育的长期愿景：注重纪律、创造力、重唱合奏意识与社会责任感的全面培养。',
+              '经过数月系统性的排练、声乐打磨与团队合作，孩子们不仅提升了声乐演唱能力、舞台风范与音乐素养，更收获了自信心、坚韧品格以及对艺术家社会角色与责任的深刻理解。',
+              '对于 SAIMA 而言，培育年轻音乐人才意味着艺术造诣与博爱胸怀并重——助力下一代青年表演者成长为自信、有思考、富有同理心与社会责任感的优秀青年。',
+            ],
+          },
+          {
+            heading: '由衷感谢与致敬',
+            paragraphs: [
+              '南澳国际音乐家协会（SAIMA）谨向各方致以最诚挚的谢意：',
+              '• 感谢南澳儿童癌症协会（Childhood Cancer Association）卓有成效的公益工作与信任合作',
+              '• 感谢所有参演家庭、家长与幕后志愿者的倾情奉献与无私支持',
+              '• 感谢亲临现场并慷慨解囊的观众朋友与社区善长',
+              '• 感谢“Elsa 和她的小童星”全体年轻小歌者，是你们的勇敢、才华与纯真让这场音乐会绽放光芒',
+            ],
+            footer: '当孩子们为其他孩子唱歌，音乐便化作了希望。',
+          },
         ],
         details: [
-          { label: '项目名称', value: 'Elsa & Her Children – A Dream for Every Child' },
+          { label: '音乐会名称', value: '《希望之声——每一个孩子都有梦想》（Harmony of Hope）' },
+          { label: '系列品牌', value: 'SAIMA 音乐会系列 | Elsa 和她的小童星（Elsa and her Young Stars）' },
           { label: '日期', value: '2026年10月16日' },
-          { label: '地点', value: 'Royalty Theatre' },
-          { label: '主办', value: '南澳国际音乐协会' },
-          { label: '表演者', value: '约18–20名8–15岁获奖青少年声乐表演者' },
-          {
-            label: '艺术水准',
-            value: '所有受邀表演者均曾在声乐比赛中获得前三名，其中超过半数曾获得 Adelaide Eisteddfod 第一名。',
-          },
-          { label: '观众容量', value: '约500席' },
-          { label: '宗旨', value: '鼓励青少年通过音乐服务社区，同时为受儿童癌症影响的家庭筹集善款。' },
+          { label: '场地', value: 'Royalty Theatre, Adelaide' },
+          { label: '主办单位', value: '南澳国际音乐家协会（SAIMA）' },
+          { label: '总监、制作人与声乐指导', value: '田依因（Yiyin Elsa Tian）' },
+          { label: '副总监与舞台监督', value: 'Callum McGing' },
+          { label: '受捐慈善机构', value: '南澳儿童癌症协会（Childhood Cancer Association）' },
+          { label: '筹集善款', value: 'AUD $2,114.39（2,114.39 澳元）' },
+          { label: '参演演员', value: 'Elsa 和她的小童星（5–15岁优秀青少年小歌者）' },
         ],
         performers: charityConcertPerformersZh,
         programSchedule: charityConcertScheduleZh,
@@ -770,6 +854,18 @@ export const eventsContent: Localized<EventsContent> = {
           label: '音乐会节目单',
           url: eventAssetUrl('20261016', 'program-v2.jpg', '20260906'),
         },
+        videos: [
+          {
+            title: '音乐会全程实况录像',
+            embedId: 'dPypqQAAWNs',
+          },
+          {
+            title: '音乐会精彩集锦短片',
+            src: '/events/20261016/summary.mp4',
+            type: 'video/mp4',
+          },
+        ],
+        galleryImages: harmonyOfHopeImages,
         resources: [
           {
             label: '募捐授权文件',
@@ -862,7 +958,6 @@ export const eventsContent: Localized<EventsContent> = {
           label: '音乐会海报',
           url: '/events/20261024/concert-poster.png',
         },
-        galleryImages: voicesBeyondBordersImages,
       },
       {
         id: '20250413',

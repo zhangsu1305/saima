@@ -185,6 +185,11 @@ export const choirContent: Localized<ChoirContent> = {
           caption: 'Young choristers celebrating together in concert attire and panda headbands after their performance.',
           tag: 'Community Joy',
         },
+        {
+          url: '/images/saima/choir-hall.jpg',
+          caption: 'Choral ensemble rehearsal and vocal practice in Adelaide’s historic rehearsal hall.',
+          tag: 'Hall Rehearsal',
+        },
       ],
     },
     programsOverview: {
@@ -452,6 +457,11 @@ export const choirContent: Localized<ChoirContent> = {
           url: '/images/saima/choir2.jpeg',
           caption: '演出圆满结束后，身着演出服与可爱熊猫头饰的小团员们在现场欢聚留念。',
           tag: '少年风采',
+        },
+        {
+          url: '/images/saima/choir-hall.jpg',
+          caption: '合唱团学子在阿德莱德历史音乐厅中的多声部合唱排练与艺术集训。',
+          tag: '排练集训',
         },
       ],
     },

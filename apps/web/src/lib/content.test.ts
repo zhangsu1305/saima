@@ -104,6 +104,7 @@ describe('public site content', () => {
     }
 
     expect(siteImages.instrumentalPerformance).toBe('/images/saima/instrumental_performance.jpeg')
+    expect(siteImages.choirHero).toBe('/images/saima/choir-hero.jpg')
 
     for (const group of galleryContent.en.groups) {
       expect(Object.values(siteImages)).toContain(group.image)
@@ -114,7 +115,7 @@ describe('public site content', () => {
     expect(homeContent.en.hero.title).toContain('South Australian International Musicians Association')
     expect(homeContent.zh.hero.title).toBe('南澳国际音乐协会')
     expect(aboutContent.en.sections[0]?.title).toBe('Founder & Artistic Director')
-    expect(eventsContent.en.events[0]?.title).toBe('A Dream for Every Child')
+    expect(eventsContent.en.events[0]?.title).toBe('Harmony of Hope – Every Child Has a Dream')
     expect(eventsContent.zh.events.find((e) => e.id === '20240930')?.title).toContain('中国印象')
     expect(membershipContent.en.expression.title).toContain('Expression of Interest')
     expect(contactContent.zh.partner.title).toBe('为什么与我们合作')
@@ -144,6 +145,7 @@ describe('public site content', () => {
     const charityConcert = findEvent('en', '20261016')
     const culturalConcert = findEvent('en', '20240930')
 
+    expect(charityConcert?.title).toBe('Harmony of Hope – Every Child Has a Dream')
     expect(charityConcert?.posterImage).toEqual({
       label: 'Concert Poster',
       url: eventAssetUrl('20261016', 'poster-v2.jpg', '20260906'),
@@ -153,11 +155,9 @@ describe('public site content', () => {
       url: eventAssetUrl('20261016', 'program-v2.jpg', '20260906'),
     })
     expect(charityConcert?.seoTitle).toBe(
-      'A Dream for Every Child | Adelaide Charity Concert | 16 October 2026',
+      'Harmony of Hope – Every Child Has a Dream | Adelaide Charity Concert',
     )
-    expect(charityConcert?.seoDescription).toBe(
-      'An award-winning cast of young vocalists performs musical theatre favourites at Adelaide’s Royalty Theatre, raising funds for children and families affected by cancer. Tickets from $25.',
-    )
+    expect(charityConcert?.seoDescription).toContain('Harmony of Hope – Every Child Has a Dream')
     expect(charityConcert?.resources).toEqual([
       {
         label: 'Authority to Fundraise',
@@ -165,6 +165,21 @@ describe('public site content', () => {
         url: eventAssetUrl('20261016', 'Authority.pdf'),
       },
     ])
+    expect(charityConcert?.galleryImages).toHaveLength(24)
+    expect(charityConcert?.galleryImages?.[0]?.url).toBe('/events/20261016/gallery/gallery-01.jpg')
+    expect(charityConcert?.galleryImages?.[23]?.url).toBe('/events/20261016/gallery/gallery-24.jpg')
+    expect(charityConcert?.videos).toEqual([
+      {
+        title: 'Full Recorded Concert Performance',
+        embedId: 'dPypqQAAWNs',
+      },
+      {
+        title: 'Concert Highlights & Summary Video',
+        src: '/events/20261016/summary.mp4',
+        type: 'video/mp4',
+      },
+    ])
+    expect(charityConcert?.details?.find((d) => d.label === 'Funds Raised')?.value).toBe('AUD $2,114.39')
 
     expect(culturalConcert?.galleryImages).toHaveLength(12)
     expect(culturalConcert?.galleryImages?.map((item) => item.img)).toEqual([
@@ -310,10 +325,8 @@ describe('public site content', () => {
     expect(concertEn?.featuredArtists?.list[1]?.bio.join(' ')).toContain('Homage to Black Sabbath')
     expect(concertEn?.featuredArtists?.list[2]?.bio.join(' ')).toContain('ERA (Exceptional Rising Artists)')
 
-    expect(concertEn?.galleryImages).toHaveLength(24)
-    expect(concertZh?.galleryImages).toHaveLength(24)
-    expect(concertEn?.galleryImages?.[0]?.url).toBe('/events/20261024/gallery/gallery-01.jpg')
-    expect(concertEn?.galleryImages?.[23]?.url).toBe('/events/20261024/gallery/gallery-24.jpg')
+    expect(concertEn?.galleryImages).toBeUndefined()
+    expect(concertZh?.galleryImages).toBeUndefined()
   })
 
   it('clearly presents Parent-Child Choir and SAIMA Children’s Choir programs with dedicated performance integration', () => {
@@ -361,9 +374,10 @@ describe('public site content', () => {
       )
 
       expect(choir.topGallery).toBeTruthy()
-      expect(choir.topGallery.photos.length).toBeGreaterThanOrEqual(6)
+      expect(choir.topGallery.photos.length).toBeGreaterThanOrEqual(7)
       expect(choir.topGallery.photos.map((p) => p.url)).toEqual(
         expect.arrayContaining([
+          '/images/saima/choir-hall.jpg',
           '/images/saima/choir-performances/20261016-stage.jpg',
           '/images/saima/choir1.jpg',
           '/images/saima/choir-performances/20261016-singing.jpg',

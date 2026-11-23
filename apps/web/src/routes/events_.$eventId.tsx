@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ArrowLeft, ExternalLink, FileText, MapPin, Music, Sparkles } from 'lucide-react'
+import { ArrowLeft, ExternalLink, FileText, MapPin, Music, Sparkles, Video } from 'lucide-react'
 import { useEffect } from 'react'
 
 import { useLanguage } from '../components/language-provider'
@@ -98,6 +98,7 @@ function EventPage() {
         labels={content.labels}
         statusLabel={statusLabel}
         hasGallery={Boolean(event.galleryImages?.length)}
+        hasVideos={Boolean(event.videos?.length)}
         hasOverview={Boolean(event.paragraphs?.length || event.overviewSections?.length || event.posterImage)}
       />
 
@@ -154,12 +155,14 @@ function EventHeader({
   labels,
   statusLabel,
   hasGallery,
+  hasVideos,
   hasOverview,
 }: {
   event: EventArticle
   labels: EventLabels
   statusLabel: string
   hasGallery?: boolean
+  hasVideos?: boolean
   hasOverview?: boolean
 }) {
   return (
@@ -180,6 +183,13 @@ function EventHeader({
           <Button asChild variant="outline">
             <a href="#gallery">
               <Sparkles size={16} /> {labels.gallery}
+            </a>
+          </Button>
+        )}
+        {hasVideos && (
+          <Button asChild variant="outline">
+            <a href="#videos">
+              <Video size={16} /> {labels.videos}
             </a>
           </Button>
         )}
@@ -490,22 +500,37 @@ function EventResourcesSection({ labels, resources }: { labels: EventLabels; res
 
 function EventVideosSection({ labels, videos }: { labels: EventLabels; videos: NonNullable<EventArticle['videos']> }) {
   return (
-    <section className="public-section">
-      <div className="section-heading">
-        <h2>{labels.videos}</h2>
+    <section className="public-section" id="videos">
+      <SectionHeading eyebrow={labels.videos} title={labels.videos} />
+      <div className="event-video-grid">
+        {videos.map((video, idx) => (
+          <div className="event-video-card" key={video.embedId || video.src || idx}>
+            {video.title && <h3 className="event-video-title">{video.title}</h3>}
+            <div className="video-container">
+              {video.embedId ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.embedId}`}
+                  title={video.title || 'YouTube video player'}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              ) : video.src ? (
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  src={video.src}
+                  aria-label={video.title}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : null}
+            </div>
+          </div>
+        ))}
       </div>
-      {videos.map((video) => (
-        <div className="video-container" key={video.embedId}>
-          <iframe
-            src={`https://www.youtube.com/embed/${video.embedId}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
-        </div>
-      ))}
     </section>
   )
 }

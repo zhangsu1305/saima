@@ -31,7 +31,10 @@ export type EventArticle = TextBlock & {
     value: string
   }>
   videos?: Array<{
-    embedId: string
+    embedId?: string
+    src?: string
+    title?: string
+    type?: string
   }>
   galleryImages?: Array<{
     id: string
@@ -107,3 +110,4 @@ export type ImageKey =
   | 'instrumentalPerformance'
   | 'galleryPerformance'
   | 'choirHall'
+  | 'choirHero'

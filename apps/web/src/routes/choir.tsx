@@ -16,7 +16,7 @@ function Choir() {
     <main className="public-page">
       {/* Hero Section */}
       <section className="choir-hero">
-        <img src={siteImages.choirHall} alt="" aria-hidden="true" />
+        <img src={siteImages.choirHero} alt="" aria-hidden="true" />
         <div>
           <span className="eyebrow">{content.hero.eyebrow}</span>
           <h1>{content.hero.title}</h1>
