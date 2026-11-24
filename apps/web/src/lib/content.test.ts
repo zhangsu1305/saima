@@ -165,9 +165,22 @@ describe('public site content', () => {
         url: eventAssetUrl('20261016', 'Authority.pdf'),
       },
     ])
-    expect(charityConcert?.galleryImages).toHaveLength(24)
+    expect(charityConcert?.galleryImages).toHaveLength(17)
     expect(charityConcert?.galleryImages?.[0]?.url).toBe('/events/20261016/gallery/gallery-01.jpg')
-    expect(charityConcert?.galleryImages?.[23]?.url).toBe('/events/20261016/gallery/gallery-24.jpg')
+    expect(charityConcert?.galleryImages?.[16]?.url).toBe('/events/20261016/gallery/gallery-24.jpg')
+    for (const file of [
+      'gallery-02.jpg',
+      'gallery-04.jpg',
+      'gallery-06.jpg',
+      'gallery-09.jpg',
+      'gallery-14.jpg',
+      'gallery-20.jpg',
+      'gallery-23.jpg',
+    ]) {
+      expect(
+        charityConcert?.galleryImages?.some((img) => img.url.endsWith(file)),
+      ).toBe(false)
+    }
     expect(charityConcert?.videos).toEqual([
       {
         title: 'Full Recorded Concert Performance',

@@ -1677,6 +1677,25 @@ nav {
   margin: 0;
 }
 
+.event-detail-list .event-detail-highlight {
+  background: rgba(200, 145, 22, 0.08);
+  border-left: 4px solid var(--saima-ochre);
+  border-radius: 6px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.event-detail-list .event-detail-highlight dt {
+  color: var(--saima-ochre);
+  font-weight: 800;
+}
+
+.event-detail-list .event-detail-highlight dd {
+  color: var(--saima-navy);
+  font-size: 1.15em;
+  font-weight: 800;
+}
+
 .event-poster {
   display: flex;
   justify-content: center;
@@ -2529,6 +2548,190 @@ nav {
   font-weight: 700;
   margin: 0;
   text-align: center;
+}
+
+/* Stylised Long Article for Retrospective Event */
+.event-stylised-article {
+  background: #ffffff;
+  border: 1px solid var(--saima-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 28px rgba(15, 23, 42, 0.05);
+  margin: 0 auto;
+  max-width: 900px;
+  padding: clamp(32px, 5vw, 64px) clamp(24px, 5vw, 56px);
+}
+
+.article-masthead {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.article-series-tag {
+  color: var(--saima-ochre);
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.article-main-title {
+  color: var(--saima-navy);
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 14px 0;
+}
+
+.article-subtitle {
+  color: #475569;
+  font-size: clamp(17px, 1.9vw, 20px);
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 auto 28px auto;
+  max-width: 720px;
+}
+
+.article-credits-box {
+  background: #fbf9f5;
+  border: 1px solid rgba(200, 145, 22, 0.25);
+  border-radius: 12px;
+  margin: 0 auto 32px auto;
+  padding: 20px 24px;
+  text-align: left;
+}
+
+.article-credits-grid {
+  display: grid;
+  gap: 12px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 0;
+}
+
+.article-credit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.article-credit-item dt {
+  color: var(--saima-ochre);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.article-credit-item dd {
+  color: var(--saima-navy);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.article-divider {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 36px 0;
+}
+
+.article-divider-line {
+  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.15), transparent);
+  flex: 1;
+  height: 1px;
+}
+
+.article-divider-diamond {
+  color: var(--saima-ochre);
+  font-size: 14px;
+}
+
+.article-body-content {
+  color: #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.article-lead-p {
+  color: var(--saima-navy);
+  font-size: clamp(18px, 2vw, 21px);
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.article-section-block {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 16px;
+  padding-top: 32px;
+}
+
+.article-section-heading {
+  color: var(--saima-navy);
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(23px, 2.5vw, 29px);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.article-highlight-callout {
+  background: linear-gradient(135deg, #fefbf3 0%, #fbf5e6 100%);
+  border-left: 4px solid var(--saima-ochre);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 2px 12px rgba(200, 145, 22, 0.08);
+  margin: 12px 0;
+  padding: 22px 28px;
+}
+
+.callout-badge {
+  align-items: center;
+  color: var(--saima-ochre);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.callout-quote {
+  color: var(--saima-navy) !important;
+  font-size: clamp(17px, 1.9vw, 19px);
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.article-closing-quote {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px dashed rgba(15, 23, 42, 0.15);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 24px 32px;
+  text-align: center;
+}
+
+.closing-quote-text {
+  color: var(--saima-navy);
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(20px, 2.2vw, 25px);
+  font-style: italic;
+  font-weight: 700;
+  margin: 0;
 }
 
 @media (max-width: 1080px) {

@@ -91,6 +91,74 @@ function EventPage() {
   const statusLabel = content.labels[getEventStatus(event)]
   const isGalleryPrimary = Boolean(isPast && event.galleryImages?.length)
 
+  if (event.id === '20261016') {
+    return (
+      <main className="public-page">
+        <EventHeader
+          event={event}
+          labels={content.labels}
+          statusLabel={statusLabel}
+          hasGallery={Boolean(event.galleryImages?.length)}
+          hasVideos={Boolean(event.videos?.length)}
+          hasOverview={Boolean(event.paragraphs?.length || event.overviewSections?.length)}
+          hasPoster={Boolean(event.posterImage)}
+          hasProgram={Boolean(event.programImage || event.programSchedule)}
+          hasPerformers={Boolean(event.performers)}
+          language={language}
+        />
+
+        {/* 1. Concert Poster */}
+        {event.posterImage && (
+          <EventPosterSection
+            posterImage={event.posterImage}
+            eyebrow={language === 'zh' ? '音乐会海报' : 'Concert Poster'}
+          />
+        )}
+
+        {/* 2. Concert Program */}
+        {(event.programImage || event.programSchedule) && (
+          <EventProgramSection
+            programImage={event.programImage}
+            programSchedule={event.programSchedule}
+            language={language}
+          />
+        )}
+
+        {/* 3. Concert Details (Money raised, location, time) */}
+        {event.details && (
+          <EventDetailsSection details={event.details} labels={content.labels} />
+        )}
+
+        {/* 4. Photo Gallery (with 7 photos removed) */}
+        {event.galleryImages && (
+          <EventGallerySection
+            galleryImages={event.galleryImages}
+            labels={content.labels}
+            isPrimary
+          />
+        )}
+
+        {/* 5. Videos (both placed here) */}
+        {event.videos && (
+          <EventVideosSection labels={content.labels} videos={event.videos} />
+        )}
+
+        {/* 6. Long article (stylised visually) */}
+        <EventArticleSection event={event} language={language} />
+
+        {/* 7. Performers grid list view */}
+        {event.performers && (
+          <EventPerformersSection performers={event.performers} />
+        )}
+
+        {/* 8. Anything else (e.g. Resources / Authority to Fundraise) */}
+        {event.resources && (
+          <EventResourcesSection labels={content.labels} resources={event.resources} />
+        )}
+      </main>
+    )
+  }
+
   return (
     <main className="public-page">
       <EventHeader
@@ -157,6 +225,10 @@ function EventHeader({
   hasGallery,
   hasVideos,
   hasOverview,
+  hasPoster,
+  hasProgram,
+  hasPerformers,
+  language,
 }: {
   event: EventArticle
   labels: EventLabels
@@ -164,7 +236,13 @@ function EventHeader({
   hasGallery?: boolean
   hasVideos?: boolean
   hasOverview?: boolean
+  hasPoster?: boolean
+  hasProgram?: boolean
+  hasPerformers?: boolean
+  language?: Language
 }) {
+  const isZh = language === 'zh'
+
   return (
     <section className="public-title">
       <span className="eyebrow">{statusLabel}</span>
@@ -179,6 +257,27 @@ function EventHeader({
             <ArrowLeft size={16} /> {labels.backToEvents}
           </a>
         </Button>
+        {hasPoster && (
+          <Button asChild variant="outline">
+            <a href="#poster">
+              <FileText size={16} /> {isZh ? '海报' : 'Poster'}
+            </a>
+          </Button>
+        )}
+        {hasProgram && (
+          <Button asChild variant="outline">
+            <a href="#program">
+              <Music size={16} /> {isZh ? '节目单' : 'Programme'}
+            </a>
+          </Button>
+        )}
+        {event.details && (
+          <Button asChild variant="outline">
+            <a href="#details">
+              <FileText size={16} /> {labels.eventDetails}
+            </a>
+          </Button>
+        )}
         {hasGallery && (
           <Button asChild variant="outline">
             <a href="#gallery">
@@ -195,8 +294,15 @@ function EventHeader({
         )}
         {hasOverview && (
           <Button asChild variant="outline">
-            <a href="#overview">
-              <Music size={16} /> {labels.eventDetails}
+            <a href="#article">
+              <FileText size={16} /> {isZh ? '回顾纪实' : 'Retrospective'}
+            </a>
+          </Button>
+        )}
+        {hasPerformers && (
+          <Button asChild variant="outline">
+            <a href="#performers">
+              <Sparkles size={16} /> {isZh ? '小演员' : 'Performers'}
             </a>
           </Button>
         )}
@@ -214,6 +320,117 @@ function BackToEventsButton({ label }: { label: string }) {
         </a>
       </Button>
     </div>
+  )
+}
+
+function EventPosterSection({
+  posterImage,
+  eyebrow = 'Concert Poster',
+}: {
+  posterImage: NonNullable<EventArticle['posterImage']>
+  eyebrow?: string
+}) {
+  return (
+    <section className="public-section" id="poster">
+      <SectionHeading eyebrow={eyebrow} title={posterImage.label || eyebrow} />
+      <div className="event-poster">
+        <img src={posterImage.url} alt={posterImage.label} />
+      </div>
+    </section>
+  )
+}
+
+function EventArticleSection({
+  event,
+  language,
+}: {
+  event: EventArticle
+  language: Language
+}) {
+  const isZh = language === 'zh'
+  const seriesBrand = isZh
+    ? 'SAIMA 音乐会系列 | Elsa 和她的小童星'
+    : 'SAIMA Concert Series | Elsa and her Young Stars'
+
+  const credits = isZh
+    ? [
+        { label: '日期', value: '2026年10月16日' },
+        { label: '场地', value: 'Royalty Theatre, Adelaide' },
+        { label: '主办单位', value: '南澳国际音乐家协会（SAIMA）' },
+        { label: '系列品牌', value: 'Elsa 和她的小童星（Elsa and her Young Stars）' },
+        { label: '总监、制作人与声乐指导', value: '田依因（Yiyin Elsa Tian）' },
+        { label: '副总监与舞台监督', value: 'Callum McGing' },
+      ]
+    : [
+        { label: 'Date', value: '16 October 2026' },
+        { label: 'Venue', value: 'Royalty Theatre, Adelaide' },
+        { label: 'Presented by', value: 'South Australian International Musicians Association (SAIMA)' },
+        { label: 'Performance Brand', value: 'Elsa and her Young Stars' },
+        { label: 'Director, Producer and Vocal Coach', value: 'Yiyin Elsa Tian' },
+        { label: 'Assistant Director and Stage Manager', value: 'Callum McGing' },
+      ]
+
+  return (
+    <section className="public-section" id="article">
+      <div className="event-stylised-article">
+        <header className="article-masthead">
+          <span className="article-series-tag">{seriesBrand}</span>
+          <h2 className="article-main-title">{event.title}</h2>
+          {event.subtitle && <p className="article-subtitle">{event.subtitle}</p>}
+
+          <div className="article-credits-box">
+            <dl className="article-credits-grid">
+              {credits.map((item) => (
+                <div key={item.label} className="article-credit-item">
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="article-divider" aria-hidden="true">
+            <span className="article-divider-line" />
+            <span className="article-divider-diamond">✦</span>
+            <span className="article-divider-line" />
+          </div>
+        </header>
+
+        <div className="article-body-content">
+          {event.paragraphs?.map((p, idx) => (
+            <p key={idx} className={idx === 0 ? 'article-lead-p' : undefined}>
+              {p}
+            </p>
+          ))}
+
+          {event.overviewSections?.map((section, idx) => (
+            <div key={section.heading ?? idx} className="article-section-block">
+              {section.heading && <h3 className="article-section-heading">{section.heading}</h3>}
+              {section.paragraphs?.map((p, pIdx) => (
+                <p key={pIdx}>{p}</p>
+              ))}
+              {section.callouts?.map((callout, cIdx) => (
+                <aside key={cIdx} className="article-highlight-callout">
+                  <div className="callout-badge">
+                    <Sparkles size={16} />
+                    <span>{isZh ? '善款募集亮点' : 'Fundraising Highlight'}</span>
+                  </div>
+                  <p className="callout-quote">{callout}</p>
+                </aside>
+              ))}
+              {section.closingParagraphs?.map((p, pIdx) => (
+                <p key={pIdx}>{p}</p>
+              ))}
+              {section.footer && (
+                <div className="article-closing-quote">
+                  <p className="closing-quote-text">“{section.footer}”</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -316,15 +533,22 @@ function EventHighlights({ highlights, label }: { highlights: string[]; label: s
 
 function EventDetailsSection({ details, labels }: { details: NonNullable<EventArticle['details']>; labels: EventLabels }) {
   return (
-    <section className="public-section">
+    <section className="public-section" id="details">
       <SectionHeading eyebrow={labels.eventDetails} title={labels.eventDetails} />
       <dl className="event-detail-list">
-        {details.map((detail) => (
-          <div key={detail.label}>
-            <dt>{detail.label}</dt>
-            <dd>{detail.value}</dd>
-          </div>
-        ))}
+        {details.map((detail) => {
+          const isHighlight =
+            detail.label.toLowerCase().includes('funds') ||
+            detail.label.includes('筹集善款') ||
+            detail.label.includes('善款')
+
+          return (
+            <div key={detail.label} className={isHighlight ? 'event-detail-highlight' : undefined}>
+              <dt>{detail.label}</dt>
+              <dd>{detail.value}</dd>
+            </div>
+          )
+        })}
       </dl>
     </section>
   )
@@ -336,7 +560,7 @@ function EventPerformersSection({
   performers: NonNullable<EventArticle['performers']>
 }) {
   return (
-    <section className="public-section">
+    <section className="public-section" id="performers">
       <div className="section-heading">
         <span className="eyebrow">{performers.eyebrow}</span>
         <h2>{performers.title}</h2>
@@ -403,7 +627,7 @@ function EventProgramSection({
   const eyebrow = programSchedule?.eyebrow ?? programImage?.label ?? 'Programme'
 
   return (
-    <section className="public-section">
+    <section className="public-section" id="program">
       <SectionHeading eyebrow={eyebrow} title={sectionTitle} />
       {programSchedule?.subtitle ? (
         <p className="program-director-subtitle">{programSchedule.subtitle}</p>
@@ -475,7 +699,7 @@ function EventProgramSection({
 
 function EventResourcesSection({ labels, resources }: { labels: EventLabels; resources: NonNullable<EventArticle['resources']> }) {
   return (
-    <section className="public-section">
+    <section className="public-section" id="resources">
       <SectionHeading eyebrow={labels.resources} title={labels.resources} />
       <div className="event-resource-grid">
         {resources.map((resource) => (
